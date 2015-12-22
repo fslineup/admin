@@ -112,9 +112,6 @@
 											<th>경기장</th>
 											<th>지역명</th>
 											<th>글쓴시간</th>
-											<th>글쓴시간</th>
-											<th>글쓴시간</th>
-											<th>글쓴시간</th>
 										</tr>
 									</thead>
 									<tbody>
