@@ -1,0 +1,22 @@
+/*------------------------------------------------------------------
+
+[Custom Stylesheet]
+
+
+Last change:	03/25/2013
+Assigned to:	ys.choi
+
+-------------------------------------------------------------------*/
+/* Reset the container */
+
+blockquote {
+    border-left: 5px solid #ff9900;
+}
+.news-items li {
+    width: 100%;
+}
+.underbar{
+	border-bottom-width: 1px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #F90;
+}

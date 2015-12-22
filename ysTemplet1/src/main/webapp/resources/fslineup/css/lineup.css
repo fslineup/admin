@@ -1,0 +1,86 @@
+/*------------------------------------------------------------------
+
+[Custom Stylesheet]
+
+
+Last change:	03/25/2013
+Assigned to:	You
+
+-------------------------------------------------------------------*/
+/* Reset the container */
+
+.injuries {
+	border-bottom: 1px dotted #CCC;
+}
+.lineup .widget-content {
+    padding-left: 0px;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+.lineup blockquote p{
+	font-size: 14px;
+}
+.lineup blockquote small{
+	display: inline;
+}
+.lineup blockquote small:before{
+	content: '';
+}
+blockquote{
+	padding-left: 10px;
+	padding-right: 0px;
+	border-left: 3px solid #eee;
+}
+.g{
+   	padding-left: 10px;
+   	padding-right: 0px;
+   	border-left: 3px solid #F90;
+}
+.exp{
+   	 padding-bottom: 0px;
+    padding-top: 0px;
+}
+small{
+	display: inline;
+}
+.team-name{
+	font-size:23px;
+}
+.lineup-header{
+	height:50px !important;
+}
+.lineup-header div{
+	height:50px !important;
+}
+.lineup-header p{
+	margin-bottom: 0px;
+	font-size:14px;
+}
+.icon{
+	width:30px;
+	height:30px;
+}
+
+.i-gtd{
+	font-weight: 700;
+    color: #A80000;
+    font-size: 80%;
+    padding-left: 5px;
+}
+.i-out{
+	font-weight: 700;
+    color: #ED0000;
+    font-size: 80%;
+    padding-left: 5px;
+}
+.i-inv{
+	font-weight: 700;
+    color: #565656;
+    font-size: 80%;
+    padding-left: 5px;
+}
+.page-header{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Lineup">
+
+	<select id="Lineup.selectCount" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) totcnt
+		FROM
+			tblinn01
+	</select>
+	<delete id="Lineup.team.deleteContents" parameterType="HashMap">
+		/* Lineup.deleteContents */
+		<![CDATA[
+			delete from tblinl01
+			WHERE DAY = #{day}
+		]]>
+	</delete>
+	<insert id="Lineup.team.insertContents" parameterType="HashMap">
+		/* Lineup.insertContents */
+		<![CDATA[
+			INSERT INTO tblinl01 
+				( 
+					HM_TEAM,
+					HM_STAT,
+					AW_TEAM,
+					AW_STAT,
+					TIME,
+					DAY
+				  )
+			VALUES 
+				(
+				   #{hm_team}
+				   ,#{hm_stat}
+				   ,#{aw_team}
+				   ,#{aw_stat}
+				   ,#{time}
+				   ,#{day}
+				  )
+		]]>
+	</insert>
+	<delete id="Lineup.player.deleteContents" parameterType="HashMap">
+		/* Lineup.player.deleteContents */
+		<![CDATA[
+			delete from tblinl02
+			WHERE DAY = #{day} AND LINE = #{line}
+		]]>
+	</delete>
+	<insert id="Lineup.player.insertContents" parameterType="HashMap">
+		/* Lineup.player.insertContents */
+		<![CDATA[
+			INSERT INTO tblinl02 
+				( 
+					NAME,
+					TEAM,
+					STATE,
+					LINE,
+					DAY
+				  )
+			VALUES 
+				(
+				   #{name}
+				   ,#{team}
+				   ,#{state}
+				   ,#{line}
+				   ,#{day}
+				  )
+		]]>
+	</insert>
+	<select id="Lineup.team.selectList" parameterType="HashMap" resultType="HashMap">
+		/* Lineup.team.selectList */
+		SELECT 
+			HM_TEAM AS "hm_team",
+			HM_STAT As "hm_stat",
+			AW_TEAM AS "aw_team",
+			AW_STAT AS "aw_stat",
+			TIME AS "time",
+			DAY AS "day"
+		FROM
+			tblinl01
+		WHERE DAY = #{day}
+		order by SNO ASC
+	</select>
+	<select id="Lineup.player.selectList" parameterType="HashMap" resultType="HashMap">
+		/* Lineup.player.selectList */
+		SELECT 
+			NAME AS "name",
+			TEAM As "team",
+			state AS "state",
+			line AS "line",
+			day AS "day"
+		FROM
+			tblinl02
+		WHERE DAY = #{day} AND LINE = #{line}
+	</select>
+	<!-- 
+	<select id="test.selectList" parameterType="HashMap" resultType="HashMap">
+		/* Reply.selectCount */
+		SELECT *
+		FROM
+			testboard
+		order by seqno desc
+		LIMIT #{firstIndex} , #{lastIndex}	
+		
+	</select> -->
+	<!-- 
+	<select id="test.excel.selectList" parameterType="HashMap" resultType="HashMap">
+		/* Reply.selectCount */
+		SELECT NT_TITLE AS title
+		,NT_REG_DATE AS regDate
+		FROM
+			BD_NOTICE
+	</select> -->
+	
+	<!--  상세내용 조회 
+	<select id="test.selectContents" resultClass="testVO"> -->	
+	<!-- <select id="test.selectContents" parameterType="HashMap" resultType="HashMap">
+		/* FrGlRefer.selectContents */
+		SELECT
+       		*
+		FROM testboard 
+		WHERE seqno = #{seqNo}
+	</select> -->	
+	
+	
+</mapper>
+	<!-- 
+	내용 수정
+	<update id="test.updateContents" parameterClass="testVO">
+		/* FrGlRefer.updateContents */
+		<![CDATA[
+			UPDATE testboard
+			SET 
+				 title = #title#
+				, cont = #cont#
+				, atchFileId = #atchFileId:VARCHAR:NO_ENTRY#
+			WHERE seqno = #seqNo#
+		]]>
+	</update>
+	
+	내용 삭제
+	<delete id="test.deleteContents" parameterClass="testVO">
+		/* FrGlRefer.deleteContents */
+		<![CDATA[
+			delete from testboard
+			WHERE seqno = #seqNo#
+		]]>
+	</delete>
+	
+	선택 삭제
+	<delete id="test.all.deleteContents" parameterClass="testVO">
+		/* FrGlRefer.all.deleteContents */
+			<isNotEmpty property="ntcobChk">
+			delete from testboard
+			WHERE 
+			<iterate prepend="seqNo IN" property="ntcobChk" open="(" close=")" conjunction=", ">
+				#ntcobChk[]#
+			</iterate>
+			</isNotEmpty>
+	</delete>
+	 -->  	

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Honey2">
+
+<select id="Honey2.selectList" parameterType="HashMap" resultType="HashMap">
+		/*Honey2.selectList */
+		SELECT 
+			OPP_TM_CD AS "oppTmCd",
+			HM_SCR AS "hmScr",
+			AW_SCR AS "awScr"
+		 FROM TBLINK01
+		 	WHERE TM_CD = #{tmCd}
+</select>
+</mapper>

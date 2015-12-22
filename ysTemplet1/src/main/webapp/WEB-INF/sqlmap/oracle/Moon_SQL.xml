@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Moon">
+	<!-- 팀 -->
+	<select id="Moon.team.selectList" parameterType="HashMap"
+		resultType="HashMap">
+		/*Moon.team.selectList*/
+		SELECT
+		KO_NM AS "koNm",
+		TM_CD As "tmCd"
+		FROM TBLIND02
+		WHERE LG_CD = #{LG_CD}
+		
+		
+	</select>
+
+	<!-- 리그 -->
+	<select id="Moon.selectList" parameterType="HashMap"
+		resultType="HashMap">
+		/*Moon.selectList */
+		SELECT
+		KO_NM AS "koNm",
+		LG_CD As "lgCd"
+		FROM TBLIND01
+	</select>
+
+
+	
+	
+	<select id="Moon.se.selectList" parameterType="HashMap" resultType="HashMap">
+		/*Moon.se.selectList */
+		SELECT 
+			SNO,
+			GET_CD_NM(LG_CD,'ko') AS lgko,
+			GET_CD_NM(HM_TM,'ko') AS hmko ,
+			GET_CD_NM(AW_TM,'ko') AS awko ,
+			MT_DTM,
+			STM_NM,
+			GET_CD_NM(AR_CD,'ko') AS arko,
+			DTM			
+		 FROM test_m
+		 	
+</select>
+
+
+
+	<!-- 자료입력 -->
+	<insert id="Moon.insertContents" parameterType="HashMap">
+		/*Moon.insertContents*/
+		INSERT INTO test_m
+		(
+		SNO,
+		LG_CD,
+		HM_TM,
+		AW_TM,
+		MT_DTM,
+		STM_NM,
+		AR_CD,
+		DTM
+		
+		)
+		VALUES
+		(
+		#{SNO},
+		#{LG_CD},
+		#{HM_TM},
+		#{AW_TM},
+		#{MT_DTM},
+		(SELECT STM_NM FROM TBLIND02 where TM_CD = #{HM_TM}),
+		(SELECT AR_CD FROM TBLIND02 WHERE TM_CD = #{HM_TM}),
+		now()
+		)
+	</insert><!-- 입력 -->
+</mapper>

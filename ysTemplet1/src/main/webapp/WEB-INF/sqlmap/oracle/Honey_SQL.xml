@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Honey">
+
+<select id="Honey.selectList" parameterType="HashMap" resultType="HashMap">
+		/*Honey.selectList*/
+			SELECT A.*,
+		DATE_FORMAT(STR_TO_DATE(MT_DTM,'%Y%m%d%H%i'),'%y-%m-%d') AS mtDtm,
+		DATE_FORMAT(STR_TO_DATE(MT_DTM,'%Y%m%d%H%i'),'%H:%i')  AS mtTime,
+		(case  DATE_FORMAT(STR_TO_DATE(MT_DTM,'%Y%m%d%H%i'),'%w') 
+			when '0' then '월' 
+			when '1' then '화' 
+			when '2' then '수'
+			when '3' then '목'
+			when '4' then '금'
+			when '5' then '토'
+			when '6' then '일'
+			else 'WHITE' 
+			end) as yoil 
+	FROM TBLINK01 A WHERE TM_CD = #{team}
+</select>
+<select id="Honey.selectContents" parameterType="HashMap" resultType="HashMap">
+		/* Honey.selectContents */
+		SELECT * FROM TBLIND02 WHERE KO_SNM = #{team}
+</select> 
+</mapper>

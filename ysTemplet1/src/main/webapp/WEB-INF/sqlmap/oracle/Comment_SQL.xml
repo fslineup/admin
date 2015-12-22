@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Comment">
+	<!-- 팀 -->
+	<select id="Comment.team.selectList" parameterType="HashMap"
+		resultType="HashMap">
+		/*Comment.team.selectList*/
+		SELECT
+		KO_NM AS "koNm",
+		EN_SNM As "enSnm"
+		FROM TBLIND02
+		WHERE LG_CD = #{league}
+	</select>
+
+	<!-- 리그 -->
+	<select id="Comment.selectList" parameterType="HashMap"
+		resultType="HashMap">
+		/*Comment.selectList */
+		SELECT
+		KO_NM AS "koNm",
+		LG_CD As
+		"lgCd"
+		FROM TBLIND01
+	</select>
+
+
+	<!-- 경기장 -->
+	<select id="Comment.stmnm.selectList" parameterType="HashMap"
+		resultType="HashMap">
+		/*Comment.stmnm.selectList */
+		SELECT
+		STM_NM AS "stmNm"
+		FROM
+		TBLIND02
+	</select>
+
+
+
+	<!-- 자료입력 -->
+	<insert id="Comment.insertContents" parameterType="HashMap">
+		/*Comment.insertContents */
+		INSERT INTO amt01
+		(
+		time,
+		league,
+		home,
+		away,
+		place,
+		wound
+		)
+		VALUES
+		(
+		#{time},
+		#{league},
+		#{home},
+		#{away},
+		#{place},
+		#{wound}
+		)
+	</insert><!-- 입력 -->
+</mapper>
